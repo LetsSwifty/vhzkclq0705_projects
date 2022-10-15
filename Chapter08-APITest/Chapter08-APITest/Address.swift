@@ -7,10 +7,18 @@
 
 import Foundation
 
-public let baseURL = "http://swiftapi.rubypaper.co.kr:2029/practice/"
+fileprivate let baseURL = "http://swiftapi.rubypaper.co.kr:2029/practice/"
 
-enum Address: String {
-    case getTime = "currentTime"
-    case post1 = "echo"
-    case post2 = "echoJSON"
+enum Address {
+    case getTime
+    case post1
+    case post2
+    
+    var url: String {
+        switch self {
+        case .getTime: return baseURL + "currentTime"
+        case .post1: return baseURL + "echo"
+        case .post2: return baseURL + "echoJSON"
+        }
+    }
 }
